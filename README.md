@@ -28,11 +28,11 @@ Code used to reproduce the results presented in this [paper], accepted at the IE
 1. (Optional) Create a dedicated Python environment
 1. Clone the repository (``--recursive`` is used to download the [PICMUS submodule] when cloning the repo)
     ```bash
-    git clone --recursive https://github.com/LTS5/USSR.git
+    git clone --recursive https://github.com/LTS5/USSR-IUS2017.git
     ```
-1. Enter in the USSR folder
+1. Enter in the `USSR-IUS2017` folder
     ```bash
-    cd USSR
+    cd USSR-IUS2017
     ```
 1. Install the Python dependencies from `python_requirements.txt`
     ```bash
@@ -56,7 +56,7 @@ Code used to reproduce the results presented in this [paper], accepted at the IE
      * Compute and export the metrics 
      * Generate and export the figures
         
-1. The folder `USSR/results` contains the metrics reported in Table I of the [paper] and the B-mode images displayed on Figure 2 of the [paper]
+1. The folder `USSR-IUS2017/results` contains the metrics reported in Table I of the [paper] and the B-mode images displayed on Figure 2 of the [paper]
 
 ## Remarks
 The code has been tested on the following architectures:
