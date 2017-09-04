@@ -6,7 +6,6 @@
 [Heriot-Watt University]:https://www.hw.ac.uk/
 [paper]:https://infoscience.epfl.ch/record/229453/files/IUS2017_USSR_An_UltraSound_Sparse_Regularization_Framework.pdf
 [PICMUS submodule]:https://bitbucket.org/picmus/picmus
-[License]: LICENCE.txt
 
 Adrien Besson<sup>1</sup>, Dimitris Perdios<sup>1</sup>, Florian Martinez<sup>1</sup>, Marcel Arditi<sup>1</sup>, Yves Wiaux<sup>2</sup> and Jean-Philippe Thiran<sup>1, 3</sup>
 
@@ -20,9 +19,10 @@ Code used to reproduce the results presented in this [paper], accepted at the IE
 
 ## Requirements
   * Linux (code tested on Linux Mint 18.1)
-  * Python >=3.5
-  * MATLAB (code tested on MATLAB R2017a) 
+  * Python >= 3.5
+  * MATLAB (code tested on MATLAB R2016b and R2017a)
   * git
+  * (Optional) NVIDIA GPU with Kepler or newer architecture
 
 ## Installation
 1. (Optional) Create a dedicated Python environment
@@ -53,22 +53,23 @@ Code used to reproduce the results presented in this [paper], accepted at the IE
     The bash file does the following operations:
      * Download the PICMUS datasets (may take some time depending on your Internet connection)
      * Reconstruct the images
-     * Compute and export the metrics 
+     * Compute and export the metrics
      * Generate and export the figures
-        
+
 1. The folder `USSR-IUS2017/results` contains the metrics reported in Table I of the [paper] and the B-mode images displayed on Figure 2 of the [paper]
 
 ## Remarks
+The code uses NVIDIA CUDA and therefore is only compatible with NVIDIA GPUs. It should support every GPU architecture starting from Kepler (compute capability >= 3.0).
 The code has been tested on the following architectures:
- * NVIDIA Titan X GPU
+ * NVIDIA Titan X GPU (cc = 6.1) and NVIDIA GeForce GT 630 (cc = 3.5)
  * Intel(R) Core(TM) i7-4930K CPU @ 3.40GHz
 
 The CPU version of the code may take a very long time. It took 10 minutes to run 200 iterations of FISTA on the above mentioned CPU.
 
 ## Developers
- * Florian Martinez (florian.martinez@epfl.ch): CUDA and C/C++ 
+ * Florian Martinez (florian.martinez@epfl.ch): CUDA and C/C++
  * Dimitris Perdios (dimitris.perdios@epfl.ch): Python interface
- * Adrien Besson (adrien.besson@epfl.ch): Matlab interface 
- 
-## [License]
-License for non-commercial use of the software. Please cite the following [paper] when using the code.
+ * Adrien Besson (adrien.besson@epfl.ch): Matlab interface
+
+## License
+[License](LICENSE.txt) for non-commercial use of the software. Please cite the following [paper] when using the code.
