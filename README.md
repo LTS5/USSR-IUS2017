@@ -23,7 +23,7 @@ Code used to reproduce the results presented in this [paper], accepted at the IE
   * pip (with setuptools and wheel)
   * MATLAB (code tested on MATLAB R2016b and R2017a)
   * git
-  * (Optional) NVIDIA GPU with Kepler or newer architecture and NVIDIA CUDA
+  * (Optional) NVIDIA GPU with Kepler or newer architecture and its driver (version >= 367.48). The CUDA toolkit is not required to run the code.
 
 ## Installation
 1. Clone the repository (``--recursive`` is used to download the [PICMUS submodule] when cloning the repo)

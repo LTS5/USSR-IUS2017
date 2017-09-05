@@ -1,7 +1,7 @@
 import os
 import urllib.request
-import subprocess
 from urllib.parse import urlparse, urlsplit
+import pynvml
 
 from tqdm import tqdm
 
@@ -47,17 +47,10 @@ def download_file(url, fdst):
 
 def check_nvidia_device():
     try:
-        smi = subprocess.Popen(["nvidia-smi"], stdout=subprocess.PIPE)
-        # output = smi.communicate()[0]  # TODO regex on this to extract list of devices and driver version
-        return True
-    except OSError:
-        return False
-
-
-def check_nvcc():
-    try:
-        nvcc = subprocess.Popen(["nvcc","--version"], stdout=subprocess.PIPE)
-        # output = nvcc.communicate()[0]  # TODO regex on this to extract version of nvcc
-        return True
-    except OSError:
-        return False
+        pynvml.nvmlInit()
+        driver_version = float(pynvml.nvmlSystemGetDriverVersion())
+        pynvml.nvmlShutdown()
+        if driver_version < 367.48:
+            raise OSError('NVIDIA driver v.{} is not supported. The driver version must be 367.48 or newer'.format(driver_version))
+    except pynvml.NVMLError:
+        raise OSError('NVIDIA device not found')

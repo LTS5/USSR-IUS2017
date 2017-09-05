@@ -190,12 +190,9 @@ class Interface:
             shutil.rmtree(self.__tmp_folder)
 
     def launch(self, processing_unit='CPU', run_number=1):
-        # NVIDIA and CUDA check
+        # NVIDIA device and driver check
         if processing_unit == 'GPU':
-            if not ussr.utils.ui.check_nvidia_device():
-                raise OSError('NVIDIA device not found')
-            if not ussr.utils.ui.check_nvcc():
-                raise OSError('CUDA not found')
+            ussr.utils.ui.check_nvidia_device()
 
         # Inputs
         if processing_unit == 'CPU':

@@ -3,4 +3,5 @@ matplotlib
 scipy
 h5py
 tqdm
+nvidia-ml-py3
 # jupyter
