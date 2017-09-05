@@ -86,8 +86,12 @@ Code used to reproduce the results presented in this [paper], accepted at the IE
 ## Remarks
 The GPU code uses NVIDIA CUDA and therefore is only compatible with NVIDIA GPUs. It should support every GPU architecture starting from Kepler (compute capability >= 3.0).
 The code has been tested on the following architectures:
-  * NVIDIA Titan X (cc = 6.1), NVIDIA GeForce GTX 1080 Ti (cc = 6.1) and NVIDIA GeForce GT 630 (cc = 3.5)
-  * Intel(R) Core(TM) i7-4930K CPU @ 3.40GHz
+  * GPUs:
+    * NVIDIA Titan X (cc = 6.1)
+    * NVIDIA GeForce GTX 1080 Ti (cc = 6.1)
+    * NVIDIA GeForce GT 630 (cc = 3.5)
+  * CPU:
+    * Intel(R) Core(TM) i7-4930K CPU @ 3.40GHz
 
 The CPU version of the code may take a very long time. It took 10 minutes to run 200 iterations of FISTA on the above mentioned CPU.
 
