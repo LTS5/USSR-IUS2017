@@ -20,9 +20,10 @@ Code used to reproduce the results presented in this [paper], accepted at the IE
 ## Requirements
   * Linux (code tested on Linux Mint 18.1)
   * Python >= 3.5
+  * pip (with setuptools and wheel)
   * MATLAB (code tested on MATLAB R2016b and R2017a)
   * git
-  * (Optional) NVIDIA GPU with Kepler or newer architecture
+  * (Optional) NVIDIA GPU with Kepler or newer architecture and NVIDIA CUDA
 
 ## Installation
 1. (Optional) Create a dedicated Python environment
