@@ -27,60 +27,74 @@ Code used to reproduce the results presented in this [paper], accepted at the IE
 
 ## Installation
 1. Clone the repository (``--recursive`` is used to download the [PICMUS submodule] when cloning the repo)
+
     ```bash
     git clone --recursive https://github.com/LTS5/USSR-IUS2017.git
     ```
+
 1. Enter in the `USSR-IUS2017` folder
+
     ```bash
     cd USSR-IUS2017
     ```
+
 1. (Optional) Create a dedicated Python environment
-  * Using Anaconda:
-    ```bash
-    conda create -n ussr_ius2017 python=3.5
-    source activate ussr_ius2017
-    ```
-  * Using `pyenv`:
-    ```bash
-    pyvenv /path/to/new/virtual/env . /path/to/new/virtual/env/bin/activate
-    ```
+
+    * Using Anaconda:
+
+      ```bash
+      conda create -n ussr_ius2017 python=3.5
+      source activate ussr_ius2017
+      ```
+
+    * Using `pyenv`:
+
+      ```bash
+      pyvenv /path/to/new/virtual/env . /path/to/new/virtual/env/bin/activate
+      ```
+
 1. Install Python dependencies from `python_requirements.txt`. Depending on your installation, `pip` may refer to Python 2 (you can verify with `pip -V`). In that case, use `pip3` instead of `pip`.
-  ```bash
-  pip install --upgrade pip
-  pip install -r python_requirements.txt
-  ```
+
+    ```bash
+    pip install --upgrade pip
+    pip install -r python_requirements.txt
+    ```
 
 ## Reproduce the results of the paper
 1. Launch the bash file
+
     * To run the GPU version of the code
+
         ```bash
         ./ius_results.sh 'GPU'
         ```
+
     * To run the CPU version of the code
+
         ```bash
         ./ius_results.sh 'CPU'
         ```
 
-  The bash file does the following operations:
-    * Download the PICMUS datasets (may take some time depending on your Internet connection)
-    * Reconstruct the images
-    * Compute and export the metrics
-    * Generate and export the figures
+    The bash file does the following operations:
+      * Download the PICMUS datasets (may take some time depending on your Internet connection)
+      * Reconstruct the images
+      * Compute and export the metrics
+      * Generate and export the figures
 
 1. The folder `USSR-IUS2017/results` contains the metrics reported in Table I of the [paper] and the B-mode images displayed on Figure 2 of the [paper]
 
 ## Remarks
 The GPU code uses NVIDIA CUDA and therefore is only compatible with NVIDIA GPUs. It should support every GPU architecture starting from Kepler (compute capability >= 3.0).
 The code has been tested on the following architectures:
- * NVIDIA Titan X (cc = 6.1), NVIDIA GeForce GTX 1080 Ti (cc = 6.1) and NVIDIA GeForce GT 630 (cc = 3.5)
- * Intel(R) Core(TM) i7-4930K CPU @ 3.40GHz
+  * NVIDIA Titan X (cc = 6.1), NVIDIA GeForce GTX 1080 Ti (cc = 6.1) and NVIDIA GeForce GT 630 (cc = 3.5)
+  * Intel(R) Core(TM) i7-4930K CPU @ 3.40GHz
 
 The CPU version of the code may take a very long time. It took 10 minutes to run 200 iterations of FISTA on the above mentioned CPU.
 
 ## Developers
- * Florian Martinez (florian.martinez@epfl.ch): CUDA and C/C++
- * Dimitris Perdios (dimitris.perdios@epfl.ch): Python interface
- * Adrien Besson (adrien.besson@epfl.ch): Matlab interface
+  * Florian Martinez (florian.martinez@epfl.ch): CUDA and C/C++
+  * Dimitris Perdios (dimitris.perdios@epfl.ch): Python interface
+  * Adrien Besson (adrien.besson@epfl.ch): Matlab interface
 
 ## License
 [License](LICENSE.txt) for non-commercial use of the software. Please cite the following [paper] when using the code.
