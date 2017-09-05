@@ -9,10 +9,10 @@ if [ ! -d "results" ]; then
 fi
 
 echo "*****************************   Downloading the data   *****************************"
-python setup_ius.py
+python3 setup_ius.py
 
 echo "*****************************   Launching the image reconstruction scripts   *****************************"
-python launch_ius_scripts.py $1
+python3 launch_ius_scripts.py $1
 
 echo "*****************************   Launching the scripts generating the metrics   *****************************"
 cd matlab
