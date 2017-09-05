@@ -36,18 +36,15 @@ Code used to reproduce the results presented in this [paper], accepted at the IE
     ```
 1. (Optional) Create a dedicated Python environment
   * Using Anaconda:
-
-  ```bash
-  conda create -n ussr_ius2017 python=3.5
-  source activate ussr_ius2017
-  ```
-
+    ```bash
+    conda create -n ussr_ius2017 python=3.5
+    source activate ussr_ius2017
+    ```
   * Using `pyenv`:
-
-  ```bash
-  pyvenv /path/to/new/virtual/env . /path/to/new/virtual/env/bin/activate
-  ```
-* Install Python dependencies from `python_requirements.txt`. Depending on your installation, `pip` may refer to Python 2 (you can verify with `pip -V`). In that case, use `pip3` instead of `pip`.
+    ```bash
+    pyvenv /path/to/new/virtual/env . /path/to/new/virtual/env/bin/activate
+    ```
+1. Install Python dependencies from `python_requirements.txt`. Depending on your installation, `pip` may refer to Python 2 (you can verify with `pip -V`). In that case, use `pip3` instead of `pip`.
   ```bash
   pip install --upgrade pip
   pip install -r python_requirements.txt
@@ -63,11 +60,12 @@ Code used to reproduce the results presented in this [paper], accepted at the IE
         ```bash
         ./ius_results.sh 'CPU'
         ```
-    The bash file does the following operations:
-     * Download the PICMUS datasets (may take some time depending on your Internet connection)
-     * Reconstruct the images
-     * Compute and export the metrics
-     * Generate and export the figures
+
+  The bash file does the following operations:
+    * Download the PICMUS datasets (may take some time depending on your Internet connection)
+    * Reconstruct the images
+    * Compute and export the metrics
+    * Generate and export the figures
 
 1. The folder `USSR-IUS2017/results` contains the metrics reported in Table I of the [paper] and the B-mode images displayed on Figure 2 of the [paper]
 
