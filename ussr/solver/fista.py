@@ -35,11 +35,6 @@ class FISTA(SolverBase):
 
         # Max iter
         self.__max_iter = int(max_iter)
-        # if isinstance(max_iter, float):
-        #     self.__max_iter = max_iter
-        # else:
-        #     raise TypeError('Maximum number of iterations parameter must be a int')
-
 
     # Properties
     @property

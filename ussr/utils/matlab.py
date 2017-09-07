@@ -3,6 +3,7 @@ import ussr.sequence
 import numpy as np
 import os
 
+
 def export(dir_name, rf_image, sequence):
     tmp_seq = sequence
     if not isinstance(rf_image, np.ndarray):

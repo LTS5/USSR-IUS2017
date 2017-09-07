@@ -21,14 +21,6 @@ class Interface:
         self.__use_gpu = False
 
         # Solver properties
-        """
-        TODO: if `solver` parameter is called, then it looses its reference to the SolverBase class...
-        Ex:
-        solver.sequence  <- will work
-        solver.measurement_model <- cannot find ref since already call before...
-        Hence a `tmp_solver` is created...
-        Seems to be a PyCharm error...
-        """
         tmp_solver = solver
         if not isinstance(tmp_solver, ussr.solver.SolverBase):
             raise TypeError('solver attribute must be an instance of {base_class}'.format(
@@ -38,15 +30,13 @@ class Interface:
         settings = dict()
 
         # Solver
-        """
-        Solver keys:
-            solver:
-            max_iter: not required for DAS
-            transform: not required (only when using prior SA)
-            gamma: not required (only PDFB)
-            beta: not required (only PDFB)
-            mu: not required (only FISTA, FISTALP)
-        """
+        # Solver keys:
+        #     solver:
+        #     max_iter: not required for DAS
+        #     transform: not required (only when using prior SA)
+        #     gamma: not required (only PDFB)
+        #     beta: not required (only PDFB)
+        #     mu: not required (only FISTA, FISTALP)
 
         if isinstance(tmp_solver, ussr.solver.DAS):
             settings['solver'] = 'DAS'
@@ -69,7 +59,6 @@ class Interface:
         settings['processing_unit'] = 'CPU'
 
         # Sequence
-        # TODO: generalize for other Sequence types
         seq = tmp_solver.sequence
         if isinstance(seq, ussr.sequence.PWSequence):
             settings['transmit_wave'] = 'PW'
@@ -105,13 +94,6 @@ class Interface:
         Nz_min = int(2 * np.ceil(0.5 * settings['z_min'] / settings['dz_im']))  # ceil to nearest even
         Nz_max = int(2 * np.floor(0.5 * settings['z_max'] / settings['dz_im']))  # floor to nearest even
         seq.crop_data(first_index=Nz_min, last_index=Nz_max)
-        x_lim, z_lim = seq.image_limits
-        """
-        TODO: see why it doesn't work when re-assigning computed z_lim which is exact and extremely close to 
-        settings['z_max'] or settings['z_min'].
-        It seems that it is somehow "out of grid" and kills the process.
-        For now let's stick to the predefined values
-        """
 
         #   Aditional required fields
         settings['distribution'] = 'uniform'

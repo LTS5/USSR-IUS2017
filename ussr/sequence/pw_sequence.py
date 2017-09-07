@@ -42,12 +42,10 @@ class PWSequence(USSequence):
         x_min = -self.probe.width / 2
         x_max = self.probe.width / 2
 
-        # Computed assuming a normal incidence PW (even if zero angle is not available)
-        # TODO: not very robust...
+        # Image limits are computed assuming a normal incidence PW (even if zero angle is not available)
         ind_zero_angle_check = np.where(self.angles == 0)[0]
         if ind_zero_angle_check.size == 0:
             ind_angle = 0
-            # raise ValueError('A zero angle is required for computing the image limits')
         else:
             ind_angle = int(ind_zero_angle_check)  # lists require int or slice for indexing
 
@@ -57,12 +55,6 @@ class PWSequence(USSequence):
 
         z_min = initial_time * self.mean_sound_speed / 2
         z_max = (initial_time + sample_number * 1 / self.sampling_frequency) * self.mean_sound_speed / 2
-
-        # x_min = -self.probe_width / 2
-        # x_max = self.probe_width / 2
-        # z_min = self.initial_time * self.mean_sound_speed / 2
-        # z_max = (self.initial_time + self.sample_number * 1 / self.sampling_frequency) * self.mean_sound_speed / 2
-        # self.image_limits = [[x_min, x_max], [z_min, z_max]]
 
         return [[x_min, x_max], [z_min, z_max]]
 

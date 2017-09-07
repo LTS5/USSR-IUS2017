@@ -74,8 +74,6 @@ class Probe1D:
             t_start = 0
             t_stop = int(self.impulse_cycles / self.center_frequency * sampling_frequency) * dt  # int() applies floor
             t_num = int(self.impulse_cycles / self.center_frequency * sampling_frequency) + 1  # int() applies floor
-            # t_stop_old = self.impulse_cycles / self.center_frequency
-            # t = np.arange(t_start, t_stop_old, dt)
             t = np.linspace(t_start, t_stop, t_num)
             impulse = np.sin(2 * np.pi * self.center_frequency * t)
             if self.impulse_window == 'hanning':
@@ -86,7 +84,7 @@ class Probe1D:
                 raise NotImplementedError('Window type {} not implemented'.format(self.impulse_window))
             return impulse * win
         elif self.impulse_window == 'gauss':
-            # Compute cutoff time for when the pulse amplitude falls below `tpr` (in dB) which is set at -100dB
+            # Compute cutoff time for when the pulse amplitude falls below `tpr` (in dB), which is set at -60dB
             tpr = -60
             t_cuttoff = scipy.signal.gausspulse('cutoff', fc=self.center_frequency, bw=self.bandwidth, tpr=tpr)
             t = np.arange(-t_cuttoff, t_cuttoff, dt)

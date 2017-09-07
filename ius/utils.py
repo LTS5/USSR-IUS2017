@@ -1,4 +1,3 @@
-# TO ADD if example script launched from USSR/examples/python
 import ussr.data.picmus as picmus_data
 from ussr.measurement_model import MeasurementModel
 from ussr.solver import FISTA, DAS

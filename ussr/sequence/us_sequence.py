@@ -21,7 +21,6 @@ class USSequence(metaclass=ABCMeta):
 
         self.__name = name
         self.__type = sequence_type
-        # TODO: generalize to other probes
         if isinstance(probe, Probe1D):
             self.__probe = probe
         else:
@@ -120,8 +119,6 @@ class USSequence(metaclass=ABCMeta):
         t_start = 0
         t_stop = int(self.transmit_cycles / self.transmit_frequency * self.sampling_frequency) * dt  # int() applies floor
         t_num = int(self.transmit_cycles / self.transmit_frequency * self.sampling_frequency) + 1  # int() applies floor
-        # t_stop_old = self.impulse_cycles / self.center_frequency
-        # t = np.arange(t_start, t_stop_old, dt)
         t = np.linspace(t_start, t_stop, t_num)
 
         if self.transmit_wave == 'sine':
@@ -141,7 +138,6 @@ class USSequence(metaclass=ABCMeta):
         return pulse
 
     def normalize_data(self):
-        # TODO: should the normalization be performed on the entire set?
         for data in self.data:
             data /= data.max()
 
@@ -157,7 +153,6 @@ class USSequence(metaclass=ABCMeta):
             sample_number = data.shape[-1]
             depth = initial_time * self.mean_sound_speed / 2 + np.arange(
                 sample_number) * self.mean_sound_speed / (2 * self.sampling_frequency)
-            # TODO: center_frequency or transmit_frequency???
             gain.append(np.exp(2 * alpha_si * self.probe.center_frequency * depth))  # roundtrip
 
         return gain

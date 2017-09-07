@@ -1,5 +1,4 @@
 class MeasurementModel:
-
     # Constructor
     def __init__(self,
                  interpolation='cubic',
